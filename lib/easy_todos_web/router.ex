@@ -17,7 +17,8 @@ defmodule EasyTodosWeb.Router do
   scope "/", EasyTodosWeb do
     pipe_through :browser
 
-    live "/", PageLive, :index
+    # todo's list
+    live "/", TodoLive, :index
   end
 
   # Other scopes may use custom stacks.
