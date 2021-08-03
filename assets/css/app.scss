@@ -5,4 +5,8 @@
 
 @tailwind components;
 
+  .todo-card{
+    @apply px-2 py-2 bg-white shadow-lg rounded-lg mx-2 mb-2
+  }
+
 @tailwind utilities;
