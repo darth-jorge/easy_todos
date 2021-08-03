@@ -1,6 +1,10 @@
 <form action="#" phx-submit="add">
-  <%= text_input :todo, :title, placeholder: "What do you want to get done?", class: "w-full p-2 mb-2 border text-thin" %>
-  <%= submit "Add", phx_disable_with: "Adding...", class: "bg-blue-600 p-2 text-white rounded" %>
+  <div class="grid grid-cols-3">
+    <%= text_input :todo, :title, placeholder: "What do you want to get done?", 
+        class: "px-2 py-2 bg-white shadow-lg rounded-lg mx-2 mb-2 col-span-2" %>
+    <%= submit "Add a new Todo", phx_disable_with: "Adding...", 
+        class: "px-2 py-2 bg-white shadow-lg rounded-lg mx-2 mb-2 bg-blue-600 text-white" %>
+  </div>
 </form>
 
 <%= for todo <- @todos do %>
