@@ -4,8 +4,15 @@
 </form>
 
 <%= for todo <- @todos do %>
-  <div>
-    <%= checkbox(:todo, :done, phx_click: "toggle_done", phx_value_id: todo.id, value: todo.done) %>
-    <%= todo.title %>
+  <div class="todo-card">
+    <div class="grid grid-cols-3">
+      <div class="col-span-2">
+        <%= checkbox(:todo, :done, phx_click: "toggle_done", phx_value_id: todo.id, value: todo.done) %>
+        <%= todo.title %>
+      </div>
+      <div class="text-right">
+        <%= link "Delete", to: "#", phx_click: "delete", phx_value_id: todo.id, data: [confirm: "Deleting?"], class: "mr-4" %>
+      </div>
+    </div>
   </div>
 <% end %>
