@@ -1,18 +1,18 @@
 <div class="mb-4">
   <button class="bg-transparent hover:bg-blue-700 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-700 hover:border-transparent rounded-lg">
-    Prev
+   Old todos
   </button>
 
   <button class="bg-transparent hover:bg-blue-700 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-700 hover:border-transparent rounded-lg">
-    1
+    Tomorrow
   </button>
 
   <button class="bg-transparent hover:bg-blue-700 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-700 hover:border-transparent rounded-lg">
-    2
+    Next week
   </button>
 
   <button class="bg-transparent hover:bg-blue-700 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-700 hover:border-transparent rounded-lg">
-    Next
+    Future todos
   </button>
 </div>
 
@@ -38,6 +38,27 @@
           </div>
           <div class="text-right">
             <%= link "x", to: "#", phx_click: "delete", phx_value_id: todo.id, data: [confirm: "Deleting?"], class: "mr-4" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="h-auto p-4 rounded-lg shadow-lg bg-blue-700 mt-14">
+  <h1 class="font-semibold text-white">Completed Todo's</h1>
+  <div class="mt-2">
+    <%= for ctodo <- @ctodos do %>
+      <div class="todo-card">
+        <div class="grid grid-cols-3">
+          <div class="col-span-2">
+            <%= checkbox(:todo, :done, phx_click: "toggle_done", phx_value_id: ctodo.id, value: ctodo.done, 
+                class: "mr-4 form-checkbox h-5 w-5 text-gray-600") %>
+            <%= ctodo.title %>
+          </div>
+          <div class="text-right">
+            <%= link "x", to: "#", phx_click: "delete", phx_value_id: ctodo.id, data: [confirm: "Deleting?"], class: "mr-4" %>
           </div>
         </div>
       </div>

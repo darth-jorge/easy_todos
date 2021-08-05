@@ -21,6 +21,26 @@ defmodule EasyTodos.Todos do
     Repo.all(Todo)
   end
 
+  def list_completed_todos do
+    query =
+      from(t in Todo,
+        where: t.done == true
+      )
+
+    query
+    |> Repo.all()
+  end
+
+  def list_incompleted_todos do
+    query =
+      from(t in Todo,
+        where: t.done == false
+      )
+
+    query
+    |> Repo.all()
+  end
+
   @doc """
   Gets a single todo.
 

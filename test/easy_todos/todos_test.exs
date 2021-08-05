@@ -24,6 +24,16 @@ defmodule EasyTodos.TodosTest do
       assert Todos.list_todos() == [todo]
     end
 
+    test "list_incomplete_todos/0 returns all todos with done as false" do
+      todo = todo_fixture()
+      assert Todos.list_incomplete_todos() == [todo]
+    end
+
+    test "list_incomplete_todos/0 return all todos with done as true" do
+      todo = todo_fixture()
+      assert Todos.list_completed_todos() == [todo]
+    end
+
     test "get_todo!/1 returns the todo with given id" do
       todo = todo_fixture()
       assert Todos.get_todo!(todo.id) == todo
