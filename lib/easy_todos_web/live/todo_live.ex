@@ -34,8 +34,9 @@ defmodule EasyTodosWeb.TodoLive do
   end
 
   defp fetch(socket) do
-    todos = Todos.list_todos()
+    todos = Todos.list_incompleted_todos()
+    completed_todos = Todos.list_completed_todos()
 
-    assign(socket, todos: todos)
+    assign(socket, todos: todos, ctodos: completed_todos)
   end
 end
