@@ -3,7 +3,7 @@ defmodule EasyTodos.Repo.Migrations.AddTimeFieldToTodoTable do
 
   def change do
     alter table(:todos) do
-      add :date, :naive_datetime
+      add :date, :date, default: fragment("current_date")
     end
   end
 end
