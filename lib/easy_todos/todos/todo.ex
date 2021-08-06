@@ -6,6 +6,7 @@ defmodule EasyTodos.Todos.Todo do
     field :description, :string
     field :done, :boolean, default: false
     field :title, :string
+    field :date, :naive_datetime
 
     timestamps()
   end
@@ -13,7 +14,7 @@ defmodule EasyTodos.Todos.Todo do
   @doc false
   def changeset(todo, attrs) do
     todo
-    |> cast(attrs, [:title, :description, :done])
+    |> cast(attrs, [:title, :description, :done, :date])
     |> validate_required([:title,])
   end
 end

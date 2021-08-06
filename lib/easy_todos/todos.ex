@@ -21,6 +21,16 @@ defmodule EasyTodos.Todos do
     Repo.all(Todo)
   end
 
+  def list_past_todos do
+    query =
+      from(t in Todo,
+        where: t.done == true
+      )
+
+    query
+    |> Repo.all()
+  end
+
   def list_completed_todos do
     query =
       from(t in Todo,
