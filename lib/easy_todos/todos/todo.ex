@@ -6,7 +6,7 @@ defmodule EasyTodos.Todos.Todo do
     field :description, :string
     field :done, :boolean, default: false
     field :title, :string
-    field :date, :naive_datetime
+    field :date, :date
 
     timestamps()
   end
