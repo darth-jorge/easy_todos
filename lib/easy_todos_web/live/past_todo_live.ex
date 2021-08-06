@@ -9,6 +9,13 @@ defmodule EasyTodosWeb.PastTodoLive do
     {:ok, fetch(socket)}
   end
 
+  def handle_event("delete", %{"id" => id}, socket) do
+    todo = Todos.get_todo!(id)
+    Todos.delete_todo(todo)
+
+    {:noreply, fetch(socket)}
+  end
+
   def handle_info({Todos, [:todo | _], _}, socket) do
     {:noreply, fetch(socket)}
   end
@@ -16,6 +23,6 @@ defmodule EasyTodosWeb.PastTodoLive do
   defp fetch(socket) do
     past_todos = Todos.list_past_todos()
 
-    assign(socket, ctodos: past_todos)
+    assign(socket, past_todos: past_todos)
   end
 end
