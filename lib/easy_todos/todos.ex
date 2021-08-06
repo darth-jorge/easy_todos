@@ -2,6 +2,7 @@ defmodule EasyTodos.Todos do
   @moduledoc """
   The Todos context.
   """
+  use Timex
 
   import Ecto.Query, warn: false
   alias EasyTodos.Repo
@@ -24,7 +25,7 @@ defmodule EasyTodos.Todos do
   def list_past_todos do
     query =
       from(t in Todo,
-        where: t.done == true
+        where: t.date < ^Timex.now()
       )
 
     query
@@ -34,7 +35,8 @@ defmodule EasyTodos.Todos do
   def list_completed_todos do
     query =
       from(t in Todo,
-        where: t.done == true
+        where: t.done == true,
+        where: t.date == ^Timex.today()
       )
 
     query
@@ -44,7 +46,8 @@ defmodule EasyTodos.Todos do
   def list_incompleted_todos do
     query =
       from(t in Todo,
-        where: t.done == false
+        where: t.done == false,
+        where: t.date == ^Timex.today()
       )
 
     query
