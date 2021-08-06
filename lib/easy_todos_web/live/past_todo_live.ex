@@ -14,7 +14,7 @@ defmodule EasyTodosWeb.PastTodoLive do
   end
 
   defp fetch(socket) do
-    past_todos = Todos.list_incompleted_todos()
+    past_todos = Todos.list_past_todos()
 
     assign(socket, ctodos: past_todos)
   end

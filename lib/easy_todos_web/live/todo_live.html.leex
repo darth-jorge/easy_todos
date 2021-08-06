@@ -1,8 +1,9 @@
 <div class="h-auto p-4 rounded-lg shadow-lg bg-gray-100">
   <form action="#" phx-submit="add">
-    <div class="grid grid-cols-3">
+    <div class="grid grid-cols-4">
       <%= text_input :todo, :title, placeholder: "What do you want to get done?", 
           class: "px-3 py-3 bg-white shadow-lg rounded-lg mx-2 mb-2 col-span-2" %>
+      <%= date_input :todo, :date, class: "px-3 py-3 bg-white shadow-lg rounded-lg mx-2 mb-2"%>
       <%= submit "Add a new Todo", phx_disable_with: "Adding...", 
           class: "px-3 py-3 bg-white shadow-lg rounded-lg mx-2 mb-2 bg-blue-600 text-white" %>
     </div>
