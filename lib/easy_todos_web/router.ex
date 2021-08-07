@@ -20,6 +20,7 @@ defmodule EasyTodosWeb.Router do
     # todo's list
     live "/", TodoLive, :index
     live "/past-todos", PastTodoLive, :index
+    live "/future-todos", FutureTodoLive, :index
   end
 
   # Other scopes may use custom stacks.
