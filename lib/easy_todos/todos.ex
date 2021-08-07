@@ -25,7 +25,8 @@ defmodule EasyTodos.Todos do
   def list_past_todos do
     query =
       from(t in Todo,
-        where: t.date < ^Timex.now()
+        where: t.date < ^Timex.now(),
+        order_by: [{:desc, t.date}]
       )
 
     query
@@ -35,7 +36,8 @@ defmodule EasyTodos.Todos do
   def list_future_todos do
     query =
       from(t in Todo,
-        where: t.date > ^Timex.now()
+        where: t.date > ^Timex.now(),
+        order_by: [{:asc, t.date}]
       )
 
     query
