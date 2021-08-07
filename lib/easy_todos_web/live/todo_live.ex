@@ -17,7 +17,7 @@ defmodule EasyTodosWeb.TodoLive do
 
   def handle_event("delete", %{"id" => id}, socket) do
     todo = Todos.get_todo!(id)
-    Todos.delete_todo(todo)
+    Todos.remove_todo(todo)
 
     {:noreply, fetch(socket)}
   end
