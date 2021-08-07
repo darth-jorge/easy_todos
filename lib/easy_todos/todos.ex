@@ -32,6 +32,16 @@ defmodule EasyTodos.Todos do
     |> Repo.all()
   end
 
+  def list_future_todos do
+    query =
+      from(t in Todo,
+        where: t.date > ^Timex.now()
+      )
+
+    query
+    |> Repo.all()
+  end
+
   def list_completed_todos do
     query =
       from(t in Todo,
