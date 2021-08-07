@@ -12,7 +12,9 @@
   <body class="bg-white">
     <header>
       <nav class="w-full bg-blue-700 text-white flex justify-between flex-wrap p-6 md:h-20">
-        <div class="flex items-center flex-no-shrink tracking-tight text-xl font-semibold mr-4">Easy Todos</div>
+        <div class="flex items-center flex-no-shrink tracking-tight text-xl font-semibold mr-4">
+          <%= link "Easy Todos", to: "/" %>
+        </div>
 
         <div class="block lg:hidden">
           <button class="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white">
@@ -30,9 +32,9 @@
     </header>
 
     <div class="w-full mt-4 mb-10 text-right pr-28">
-      <%= link "Previous", to: "/past-todos", class: "bg-transparent hover:bg-blue-700 text-blue-700 font-semibold hover:text-white py-3 px-4 border border-blue-700 hover:border-transparent rounded-lg" %>
+      <%= link "Past", to: "/past-todos", class: "bg-transparent hover:bg-blue-700 text-blue-700 font-semibold hover:text-white py-3 px-4 border border-blue-700 hover:border-transparent rounded-lg" %>
 
-      <%= link "Present", to: "/", class: "bg-transparent hover:bg-blue-700 text-blue-700 font-semibold hover:text-white py-3 px-4 border border-blue-700 hover:border-transparent rounded-lg" %>
+      <%= link "Today", to: "/", class: "bg-transparent hover:bg-blue-700 text-blue-700 font-semibold hover:text-white py-3 px-4 border border-blue-700 hover:border-transparent rounded-lg" %>
 
       <%= link "Future", to: "/future-todos", class: "bg-transparent hover:bg-blue-700 text-blue-700 font-semibold hover:text-white py-3 px-4 border border-blue-700 hover:border-transparent rounded-lg" %>
     </div>
