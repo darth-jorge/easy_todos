@@ -21,8 +21,8 @@ defmodule EasyTodosWeb.FutureTodoLive do
   end
 
   defp fetch(socket) do
-    past_todos = Todos.list_future_todos()
+    future_todos = Todos.list_future_todos()
 
-    assign(socket, past_todos: past_todos)
+    assign(socket, future_todos: future_todos)
   end
 end
