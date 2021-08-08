@@ -3,6 +3,7 @@ defmodule EasyTodos.Utils do
   alias EasyTodos.Repo
 
   def not_removed(query), do: query |> where([q], is_nil(q.deleted_at))
+  def removed(query), do: query |> where([q], not is_nil(q.deleted_at))
   def latest(query), do: query |> order_by([q], desc: q.inserted_at)
 
   def get_all(query, type \\ :all, options \\ [])

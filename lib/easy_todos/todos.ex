@@ -25,6 +25,12 @@ defmodule EasyTodos.Todos do
     |> Repo.all()
   end
 
+  def list_removed_todos do
+    Todo
+    |> removed()
+    |> Repo.all()
+  end
+
   def list_past_todos do
     query =
       from(t in Todo,
