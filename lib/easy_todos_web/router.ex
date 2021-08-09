@@ -17,6 +17,8 @@ defmodule EasyTodosWeb.Router do
   scope "/", EasyTodosWeb do
     pipe_through :browser
 
+    get "/deleted-todos", TodosController, :index_deleted
+
     # todo's list
     live "/", TodoLive, :index
     live "/past-todos", PastTodoLive, :index

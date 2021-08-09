@@ -1,0 +1,24 @@
+<h1 class="font-semibold text-black text-2xl">Deleted Todo's</h1>
+
+<div class="h-auto">
+  <div class="mt-2">
+    <%= for past_todo <- @deleted_todos do %>
+      <div class="todo-card bg-red-500 text-center">
+        <div class="text-white">
+          <%= past_todo.date %>
+        </div>
+      </div>
+      <%= for ptodo <- @deleted_todos do %>
+        <%= if ptodo.date == past_todo.date do %>
+          <div class="todo-card bg-white border-2 border-red-500">
+            <div class="grid grid-cols-3">
+              <div class="col-span-2 text-red-500">
+                <%= ptodo.title %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

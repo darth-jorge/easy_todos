@@ -5,6 +5,7 @@ defmodule EasyTodos.Todos do
   use Timex
 
   import Ecto.Query, warn: false
+  import EasyTodos.Utils
   alias EasyTodos.Repo
 
   alias EasyTodos.Todos.Todo
@@ -19,7 +20,15 @@ defmodule EasyTodos.Todos do
 
   """
   def list_todos do
-    Repo.all(Todo)
+    Todo
+    |> not_removed() 
+    |> Repo.all()
+  end
+
+  def list_removed_todos do
+    Todo
+    |> removed()
+    |> Repo.all()
   end
 
   def list_past_todos do
@@ -30,6 +39,7 @@ defmodule EasyTodos.Todos do
       )
 
     query
+    |> not_removed()
     |> Repo.all()
   end
 
@@ -41,6 +51,7 @@ defmodule EasyTodos.Todos do
       )
 
     query
+    |> not_removed()
     |> Repo.all()
   end
 
@@ -52,6 +63,7 @@ defmodule EasyTodos.Todos do
       )
 
     query
+    |> not_removed()
     |> Repo.all()
   end
 
@@ -63,6 +75,7 @@ defmodule EasyTodos.Todos do
       )
 
     query
+    |> not_removed()
     |> Repo.all()
   end
 
@@ -80,7 +93,7 @@ defmodule EasyTodos.Todos do
       ** (Ecto.NoResultsError)
 
   """
-  def get_todo!(id), do: Repo.get!(Todo, id)
+  def get_todo!(id), do: Todo |> not_removed() |> Repo.get!(id)
 
   @doc """
   Creates a todo.
@@ -136,6 +149,13 @@ defmodule EasyTodos.Todos do
     Repo.delete(todo)
     |> broadcast_change([:todo, :deleted])
   end
+
+  def remove_todo(todo, attrs \\ %{deleted_at: NaiveDateTime.utc_now()}) do
+    todo
+    |> Todo.remove_changeset(attrs)
+    |> Repo.update()
+    |> broadcast_change([:todo, :deleted])
+   end
 
   @doc """
   Returns an `%Ecto.Changeset{}` for tracking todo changes.
