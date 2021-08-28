@@ -1,0 +1,5 @@
+<h1>Edit Super admin</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.super_admin_path(@conn, :update, @super_admin)) %>
+
+<span><%= link "Back", to: Routes.super_admin_path(@conn, :index) %></span>

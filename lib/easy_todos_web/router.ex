@@ -19,6 +19,9 @@ defmodule EasyTodosWeb.Router do
 
     get "/deleted-todos", TodosController, :index_deleted
 
+    # super admin todo: change to a different scope
+    resources "/super-admins", SuperAdminController
+
     # todo's list
     live "/", TodoLive, :index
     live "/past-todos", PastTodoLive, :index

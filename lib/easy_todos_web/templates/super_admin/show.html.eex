@@ -1,0 +1,28 @@
+<h1>Show Super admin</h1>
+
+<ul>
+
+  <li>
+    <strong>Full name:</strong>
+    <%= @super_admin.full_name %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @super_admin.email %>
+  </li>
+
+  <li>
+    <strong>Encrypted password:</strong>
+    <%= @super_admin.encrypted_password %>
+  </li>
+
+  <li>
+    <strong>Company:</strong>
+    <%= @super_admin.company %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.super_admin_path(@conn, :edit, @super_admin) %></span>
+<span><%= link "Back", to: Routes.super_admin_path(@conn, :index) %></span>
