@@ -11,5 +11,6 @@ defmodule EasyTodos.Repo.Migrations.CreateSuperAdmins do
       timestamps()
     end
 
+    create unique_index(:super_admins, [:email])
   end
 end
