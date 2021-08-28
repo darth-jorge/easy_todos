@@ -1,0 +1,32 @@
+<h1>Listing Super admins</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Full name</th>
+      <th>Email</th>
+      <th>Encrypted password</th>
+      <th>Company</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for super_admin <- @super_admins do %>
+    <tr>
+      <td><%= super_admin.full_name %></td>
+      <td><%= super_admin.email %></td>
+      <td><%= super_admin.encrypted_password %></td>
+      <td><%= super_admin.company %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.super_admin_path(@conn, :show, super_admin) %></span>
+        <span><%= link "Edit", to: Routes.super_admin_path(@conn, :edit, super_admin) %></span>
+        <span><%= link "Delete", to: Routes.super_admin_path(@conn, :delete, super_admin), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Super admin", to: Routes.super_admin_path(@conn, :new) %></span>
