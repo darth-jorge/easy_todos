@@ -15,6 +15,18 @@ defmodule EasyTodos.Accounts.SuperAdmin do
   def changeset(super_admin, attrs) do
     super_admin
     |> cast(attrs, [:full_name, :email, :encrypted_password, :company])
-    |> validate_required([:full_name, :email, :encrypted_password, :company])
+    |> validate_required([:email])
+    |> unique_constraint(:email)
+    |> encrypt_password()
+  end
+
+  defp encrypt_password(changeset) do
+    case changeset do
+      %Ecto.Changeset{valid?: true, changes: %{password: password}} ->
+        put_change(changeset, :encrypted_password, Comeonin.Bcrypt.hashpwsalt(password))
+
+      _ ->
+        changeset
+    end
   end
 end
